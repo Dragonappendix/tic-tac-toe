@@ -39,10 +39,23 @@ def take_turn(board, player):
         
 
 
-def play_game():
+def play_round():
     board = initialize_board()
     display_board(board)
-    while not(check_win_condition(board)):
-        
+    while True:
+        take_turn(board, 1)
+        if check_win_condition(board):
+            print("Player 1 wins!")
+            break
+        take_turn(board, 2)
+        if check_win_condition(board):
+            print("Player 2 wins!")
+            break
+    
 
-play_game()
+
+def play_game():
+    again = True
+    while again:
+        play_round()
+        
