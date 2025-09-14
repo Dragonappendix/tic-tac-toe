@@ -7,9 +7,13 @@ def test_board_length():
     assert len(board) == 9
 
 def test_space_conflict():
-    test_board_length()
     board = ttt.initialize_board()
-    ttt.mark_space(board, )
+    board = ttt.mark_space(board, 1, 1)
+    board = ttt.mark_space(board, 3, 2)
+    assert(ttt.check_space_conflict(board, 1))
+    assert(ttt.check_space_conflict(board, 3))
+    assert(not(ttt.check_space_conflict(board, 7)))
+    assert(not(ttt.check_space_conflict(board, 2)))
 
 
 def test_mark_space():

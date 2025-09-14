@@ -34,7 +34,7 @@ def take_turn(board, player):
         space_number = input("Invalid selection. Pick an available space.")
     mark_space(board, space_number, player)
     display_board(board)
-    return check_win_condition(board)
+    return board
         
         
 
@@ -42,5 +42,7 @@ def take_turn(board, player):
 def play_game():
     board = initialize_board()
     display_board(board)
+    while not(check_win_condition(board)):
+        
 
 play_game()
