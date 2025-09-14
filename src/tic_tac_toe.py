@@ -13,9 +13,9 @@ def display_board(board):
 
 def mark_space(board, space_number, player):
     if player == 1:
-        board[space_number-1] == '[X]'
+        board[space_number-1] = '[X]'
     else:
-        board[space_number-1] == '[O]'
+        board[space_number-1] = '[O]'
     return board
 
 
@@ -34,7 +34,7 @@ def take_turn(board, player):
         space_number = input("Invalid selection. Pick an available space.")
     mark_space(board, space_number, player)
     display_board(board)
-    if check_win_condition(board):
+    return check_win_condition(board)
         
         
 
