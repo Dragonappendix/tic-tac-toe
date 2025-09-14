@@ -77,8 +77,10 @@ def play_game():
     again = True
     while again:
         play_round()
-        if input("Play another round? (Y/N) ") == 'N':
-            break
-
+        desire = input("Play another round? (Y/N) ")
+        while desire not in "YNyn" or desire == '':
+            desire = input("Select valid option. (Y/N) ")
+        if desire in 'Nn':
+            again = False
 
 play_game()
