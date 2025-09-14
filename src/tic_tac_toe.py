@@ -35,11 +35,15 @@ def check_space_conflict(board, space_number):
 
 
 def take_turn(board, player):
-    space_number = input("Pick an available space.")
-    while str(space_number) not in '123456789':
-        space_number = input("")
-    while check_space_conflict(board, space_number):
-        space_number = input("Invalid selection. Pick an available space.")
+    space_number = input("Player " + str(player) + ", pick an available space: ")
+    while (str(space_number) not in '123456789' 
+           or len(str(space_number)) != 1
+            or check_space_conflict(board, (int(space_number)))):
+        if str(space_number) not in '123456789' or str(space_number) == '' or len(str(space_number)) != 1:
+            space_number = input("Invalid selection. Pick a number from 1 to 9: ")
+        elif check_space_conflict(board, (int(space_number))):
+            space_number = input("Invalid selection. Pick an available space: ")
+    space_number = int(space_number)
     mark_space(board, space_number, player)
     display_board(board)
     return board
@@ -48,17 +52,24 @@ def take_turn(board, player):
 
 
 def play_round():
+    guide_board = [[1], [2], [3], [4], [5], [6], [7], [8], [9]]
+    display_board(guide_board)
     board = initialize_board()
-    display_board(board)
+    turn = 0
     while True:
         take_turn(board, 1)
         if check_win_condition(board):
             print("Player 1 wins!")
             break
+        turn += 1
+        if turn == 9:
+            print("Tie!")
+            break
         take_turn(board, 2)
         if check_win_condition(board):
             print("Player 2 wins!")
             break
+        turn += 1
     
 
 
@@ -66,7 +77,8 @@ def play_game():
     again = True
     while again:
         play_round()
-        if input("Play another round? (Y/N)") == 'N':
+        if input("Play another round? (Y/N) ") == 'N':
             break
+
 
 play_game()
