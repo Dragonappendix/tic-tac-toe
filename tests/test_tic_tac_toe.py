@@ -22,3 +22,23 @@ def test_mark_space():
     assert board == ['[X]','[ ]','[ ]','[ ]','[ ]','[ ]','[ ]','[ ]','[ ]']
     board = ttt.mark_space(board, 3, 2)
     assert board == ['[X]','[ ]','[O]','[ ]','[ ]','[ ]','[ ]','[ ]','[ ]']
+
+
+
+def test_win_condition():
+    board = ['[X]','[ ]','[ ]','[X]','[ ]','[ ]','[O]','[ ]','[ ]']
+    assert not(ttt.check_win_condition(board))
+    board = ['[ ]','[ ]','[ ]','[ ]','[ ]','[ ]','[ ]','[ ]','[ ]']
+    assert not(ttt.check_win_condition(board))
+    board = ['[X]','[X]','[X]','[X]','[ ]','[X]','[O]','[ ]','[O]']
+    assert ttt.check_win_condition(board)
+    board = ['[O]','[ ]','[ ]','[O]','[ ]','[ ]','[O]','[ ]','[ ]']
+    assert ttt.check_win_condition(board)
+    board = ['[ ]','[X]','[ ]','[ ]','[X]','[ ]','[ ]','[X]','[ ]']
+    assert ttt.check_win_condition(board)
+    board = ['[ ]','[ ]','[O]','[X]','[O]','[ ]','[O]','[ ]','[ ]']
+    assert ttt.check_win_condition(board)
+    board = ['[X]','[ ]','[ ]','[ ]','[ ]','[ ]','[O]','[ ]','[ ]']
+    assert not(ttt.check_win_condition(board))
+    board = ['[X]','[ ]','[ ]','[X]','[ ]','[ ]','[ ]','[ ]','[ ]']
+    assert not(ttt.check_win_condition(board))
