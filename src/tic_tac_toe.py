@@ -2,14 +2,10 @@ def initialize_board():
     board = ['[ ]' for _ in range(0, 9)]
     return board
 
-
-
 def display_board(board):
     print(board[0] + board[1] + board[2])
     print(board[3] + board[4] + board[5])
     print(board[6] + board[7] + board[8])
-
-
 
 def mark_space(board, space_number, player):
     if player == 1:
@@ -27,13 +23,9 @@ def check_win_condition(board):
         or board[win_condition[0]] == board[win_condition[1]] == board[win_condition[2]] == '[O]'):
             return True
 
-
-
 def check_space_conflict(board, space_number):
     return board[space_number-1] != '[ ]'
     
-
-
 def take_turn(board, player):
     space_number = input("Player " + str(player) + ", pick an available space: ")
     while (str(space_number) not in '123456789' 
@@ -47,9 +39,6 @@ def take_turn(board, player):
     mark_space(board, space_number, player)
     display_board(board)
     return board
-        
-        
-
 
 def play_round():
     guide_board = [[1], [2], [3], [4], [5], [6], [7], [8], [9]]
@@ -70,8 +59,6 @@ def play_round():
             print("Player 2 wins!")
             break
         turn += 1
-    
-
 
 def play_game():
     again = True
