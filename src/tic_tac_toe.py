@@ -61,6 +61,7 @@ def play_round():
         turn += 1
 
 def play_game():
+    print("Welcome to Tic-Tac-Toe!")
     again = True
     while again:
         play_round()
